@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: rgba(56, 112, 98, 0.664);
+            
+        }
+        .box{
+           width:auto;
+           color: rgb(153, 43, 226);
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown Timer</h1>
+    <h1 id="timer">00:00:00:00</h1>
+<div class="box">
+    <small>Days</small>
+    <small>Hours</small>
+    <small>Minutes</small>
+    <small>Seconds</small>
+</div>
+<script>
+    var countDownDate = new Date("Feb 10, 2024 00:00:00").getTime();
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("timer").innerHTML = days+":"+hours + ":" + minutes + ":" + seconds;
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "ENDED";
+        }
+    }, 1000);
+</script>
+</body>
+</html>
